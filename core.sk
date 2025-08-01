@@ -30,7 +30,7 @@ on death of ender dragon:
 
 on damage:
     attacker is a player
-    victim is enderman or ender dragon
+    victim is enderman or ender dragon or endermite
     if attacker's held item is {dragonslayersword}:
         set damage to damage * 1.1 
 
