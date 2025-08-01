@@ -5,6 +5,7 @@ on load:
 	set displayname of {dragonslayersword} to "<#d462ff>Dragon Slayer Sword"
 	set line 2 of lore of {dragonslayersword} to "&7Deals &c+10%% &7damage to &5Endermen&7, &5Endermites&7," 
 	set line 3 of lore of {dragonslayersword} to "&7and the &dEnder Dragon&7."
+	set line 4 of lore of {dragonslayersword} to ""
 
 	set {dragupgrade} to book
 	set displayname of {dragupgrade} to "<#d462ff>Tome of the Dragon Slayer"
