@@ -1,0 +1,232 @@
+# DRAGON SLAYER SWORD & REQUIRED ITEMS
+
+on load:
+	set {dragonslayersword} to netherite sword
+	set displayname of {dragonslayersword} to "<#d462ff>Dragon Slayer Sword"
+	set line 2 of lore of {dragonslayersword} to "&7Deals &c+10%% &7damage to &5Endermen&7, &5Endermites&7," 
+	set line 3 of lore of {dragonslayersword} to "&7and the &dEnder Dragon&7."
+
+	set {dragupgrade} to book
+	set displayname of {dragupgrade} to "<#d462ff>Tome of the Dragon Slayer"
+	set line 1 of lore of {dragupgrade} to "&7Use in a &fSmithing Table &7to upgrade a"
+	set line 2 of lore of {dragupgrade} to "&8Netherite Sword &7into the <#d462ff>Dragon Slayer Sword&7."
+	set line 4 of lore of {dragupgrade} to "&7Grants <#ff5e5e>+10%% damage &7against <#a259ff>Endermen&7,"
+	set line 5 of lore of {dragupgrade} to "<#a259ff>Endermites&7, and the <#ff80f4>Ender Dragon&7."
+
+	set {shard} to prismarine shard
+	set displayname of {shard} to "<#a259ff>Dragon Scale"
+	set line 1 of lore of {shard} to "&7A shard of the Ender Dragon's ancient armor,"
+	set line 2 of lore of {shard} to "&7still pulsing with void energy."
+	set line 4 of lore of {shard} to "&7Used in a &fSmithing Table &7to unlock the"
+	set line 5 of lore of {shard} to "<#d462ff>Dragon Slayer Sword&7 when combined with"
+	set line 6 of lore of {shard} to "&7a &8Netherite Sword &7and the <#d462ff>Tome of the Dragon Slayer&7."
+
+on damage:
+	attacker is a player
+	victim is enderman or ender dragon or endermite
+	if attacker's held item is {dragonslayersword}:
+		set damage to damage * 1.1 
+
+on death of ender dragon:
+	chance of 5%:
+		drop 1 of {dragupgrade} at position of victim
+	chance of 5%:
+		drop 1 of {shard} at position of victim
+
+# WARP STONE
+
+on load:
+	set {warpstone} to an ender pearl
+	set displayname of {warpstone} to "<#9b59b6>Warp Stone"
+	set line 1 of lore of {warpstone} to "&7Shift + Right Click to bind location."
+	set line 2 of lore of {warpstone} to "&7Right Click to teleport back and consume the item."
+	set line 4 of lore of {warpstone} to "<#ff80f4>One-time use only."
+	set line 6 of lore of {warpstone} to "&7Location:"
+	apply custom model data to {warpstone}:
+		floats: 3
+		strings: "warp_stone"
+	set max stack size component of {warpstone} to 1
+	enchant {warpstone} with mending
+	set item flags of {warpstone} to hide enchantments
+
+on right click:
+	if player's held item is an ender pearl:
+		set {_lastused} to {cooldown::warp::%player's uuid%}
+		if {_lastused} is not set:
+			set {_lastused} to now - 301 seconds
+		set {_time} to difference between {_lastused} and now
+		if displayname of player's held item is "<#9b59b6>Warp Stone":
+			set {_item} to player's held item
+			set {_model} to custom model data of player's held item
+			if {_model} = 3:
+				cancel event
+				if player is sneaking:
+					if {location::%player's uuid%} is not set:
+						set {location::%player's uuid%} to player's location
+						set {_x} to round(player's x-coordinate)
+						set {_y} to round(player's y-coordinate)
+						set {_z} to round(player's z-coordinate)
+						set {_world} to player's world
+						set {_location} to "&eX: &7%{_x}%, &eY: &7%{_y}%, &eZ: &7%{_z}% in &e'%{_world}%'"
+						send "&7Location set to %{_location}%" to player
+						set line 6 of lore of player's held item to "&7Location: %{_location}%"
+						stop
+					else:
+						send "&7Your location is already set" to player
+						stop
+				if {location::%player's uuid%} is set:
+					if {_time} < 300 seconds:
+						cancel event
+						send "&eWarp on cooldown &c%{_time}%/5 minutes" to player
+					else:
+						teleport player to {location::%player's uuid%}
+						delete {location::%player's uuid%}
+						set {cooldown::warp::%player's uuid%} to now
+						remove 1 of {_item} from the player
+						stop
+				else:
+					send "&7Set a location before teleporting" to player
+
+# ENDERITE ARMOR & REQUIREMENTS
+
+on load:
+	set {endupgrade} to netherite upgrade smithing template
+	set displayname of {endupgrade} to "&eEnd Upgrade Smithing Template"
+	set item flags of {endupgrade} to item flags
+	set line 1 of lore of {endupgrade} to "&7Smithing Template"
+	set line 3 of lore of {endupgrade} to "&7Applies to:"
+	set line 4 of lore of {endupgrade} to " &9Netherite Equipment"
+	set line 5 of lore of {endupgrade} to "&7Ingredients:"
+	set line 6 of lore of {endupgrade} to " &9Enderite Ingot"
+
+	set {rawenderite} to white dye
+	set displayname of {rawenderite} to "&eRaw Enderite"
+	set item flags of {rawenderite} to item flags
+
+	set {enderiteingot} to gray dye
+	set displayname of {enderiteingot} to "&eEnderite Ingot"
+	set item flags of {enderiteingot} to item flags
+
+
+
+
+
+	set {helmet} to leather helmet
+	dye {helmet} (247, 233, 163)
+	set max durability of {helmet} to 707
+	set item flags of {helmet} to hide dye
+	set displayname of {helmet} to "&eEnderite Helmet"
+	
+	apply attribute modifier to {helmet}:
+		id: "minecraft:armor.helmet"
+		attribute: armor
+		amount: 5.0
+		slot: head_slot_group
+		operation: add_number
+	
+	apply attribute modifier to {helmet}:
+		id: "minecraft:armor.helmet"
+		attribute: armor toughness
+		amount: 4
+		slot: head_slot_group
+		operation: add_number
+	
+	apply attribute modifier to {helmet}:
+		id: "minecraft:armor.helmet"
+		attribute: knockback resistance
+		amount: 0.2
+		slot: head_slot_group
+		operation: add_number
+
+
+
+
+
+	set {chestplate} to leather chestplate
+	set displayname of {chestplate} to "&eEnderite Chestplate"
+	dye {chestplate} (247, 233, 163)
+	set max durability of {chestplate} to 892
+	set item flags of {chestplate} to hide dye
+
+	apply attribute modifier to {chestplate}:
+		id: "minecraft:armor.chestplate"
+		attribute: armor
+		amount: 10.0
+		slot: chest_slot_group
+		operation: add_number
+
+	apply attribute modifier to {chestplate}:
+		id: "minecraft:armor.chestplate"
+		attribute: armor toughness
+		amount: 4
+		slot: chest_slot_group
+		operation: add_number
+
+	apply attribute modifier to {chestplate}:
+		id: "minecraft:armor.chestplate"
+		attribute: knockback resistance
+		amount: 0.2
+		slot: chest_slot_group
+		operation: add_number
+
+
+
+
+
+	set {leggings} to leather leggings
+	set displayname of {leggings} to "&eEnderite Leggings"
+	dye {leggings} (247, 233, 163)
+	set max durability of {leggings} to 855
+	set item flags of {leggings} to hide dye
+
+	apply attribute modifier to {leggings}:
+		id: "minecraft:armor.leggings"
+		attribute: armor
+		amount: 8
+		slot: legs_slot_group
+		operation: add_number
+
+	apply attribute modifier to {leggings}:
+		id: "minecraft:armor.leggings"
+		attribute: armor toughness
+		amount: 4
+		slot: legs_slot_group
+		operation: add_number
+
+	apply attribute modifier to {leggings}:
+		id: "minecraft:armor.leggings"
+		attribute: knockback resistance
+		amount: 0.2
+		slot: legs_slot_group
+		operation: add_number
+
+
+
+
+
+	set {boots} to leather boots
+	set displayname of {boots} to "&eEnderite Boots"
+	dye {boots} (247, 233, 163)
+	set max durability of {boots} to 781
+	set item flags of {boots} to hide dye
+
+	apply attribute modifier to {boots}:
+		id: "minecraft:armor.boots"
+		attribute: armor
+		amount: 5
+		slot: feet_slot_group
+		operation: add_number
+	
+	apply attribute modifier to {boots}:
+		id: "minecraft:armor.boots"
+		attribute: armor toughness
+		amount: 4
+		slot: feet_slot_group
+		operation: add_number
+
+	apply attribute modifier to {boots}:
+		id: "minecraft:armor.boots"
+		attribute: knockback resistance
+		amount: 0.2
+		slot: feet_slot_group
+		operation: add_number

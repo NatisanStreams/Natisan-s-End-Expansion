@@ -1,0 +1,71 @@
+on join:
+#    set {_recipes::*} to all custom recipes
+#    unlock {_recipes::*} for player
+    unlock recipes with id "end_expansion" for player
+
+on load:
+    register smithing transform recipe:
+        id: "end_expansion:dragon_slayer_sword"
+        result: {dragonslayersword}
+        template: {dragupgrade}
+        base: netherite sword
+        addition: {shard}
+
+    register shaped recipe:
+        id: "end_expansion:warp_stone"
+        result: {warpstone}
+        shape: "cec", "apa", "oso"
+        ingredients:
+            set ingredient of "c" to chorus fruit
+            set ingredient of "e" to ender eye
+            set ingredient of "a" to amethyst shard
+            set ingredient of "p" to ender pearl
+            set ingredient of "o" to obsidian
+            set ingredient of "s" to echo shard
+
+    register new furnace recipe:
+        id: "end_expansion:enderite_ingot"
+        result: {enderiteingot}
+        input: {rawenderite}
+        cooktime: 30 seconds
+        experience: 10
+        category: "misc"
+
+    register smithing transform recipe:
+        id: "end_expansion:enderite_helmet"
+        result: {helmet}
+        template: {endupgrade}
+        base: netherite helmet
+        addition: {enderiteingot}
+        copynbt: true
+    
+    register smithing transform recipe:
+        id: "end_expansion:enderite_chestplate"
+        result: {chestplate}
+        template: {endupgrade}
+        base: netherite chestplate
+        addition: {enderiteingot}
+    
+    register smithing transform recipe:
+        id: "end_expansion:enderite_leggings"
+        result: {leggings}
+        template: {endupgrade}
+        base: netherite leggings
+        addition: {enderiteingot}
+
+    register smithing transform recipe:
+        id: "end_expansion:enderite_boots"
+        result: {boots}
+        template: {endupgrade}
+        base: netherite boots
+        addition: {enderiteingot}
+    
+    register new shaped recipe:
+        id: "end_expansion:enderite_upgrade_template"
+        result: {endupgrade}
+        shape: "sts", "ses", "sss"
+        category: "equipment"
+        ingredients:
+            set ingredient of "s" to netherite scrap
+            set ingredient of "t" to netherite upgrade smithing template
+            set ingredient of "e" to {enderiteingot}

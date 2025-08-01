@@ -1,0 +1,19 @@
+{
+    "model": {
+        "type": "select",
+        "property": "custom_model_data",
+        "fallback": {
+            "type": "model",
+            "model": "item/ender_pearl"
+        },
+        "cases": [
+            {
+                "when": "warp_stone",
+                "model": {
+                    "type": "model",
+                    "model": "item/warp_stone"
+                }
+            }
+        ]
+    }
+}
