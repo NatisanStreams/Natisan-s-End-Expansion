@@ -6,6 +6,8 @@ on load:
 	set line 2 of lore of {dragonslayersword} to "&7Deals &c+10%% &7damage to &5Endermen&7, &5Endermites&7," 
 	set line 3 of lore of {dragonslayersword} to "&7and the &dEnder Dragon&7."
 	set line 4 of lore of {dragonslayersword} to ""
+	apply custom model data to {dragonslayersword}:
+		strings: "dragon_slayer_sword"
 
 	set {dragupgrade} to book
 	set displayname of {dragupgrade} to "<#d462ff>Tome of the Dragon Slayer"
@@ -13,6 +15,8 @@ on load:
 	set line 2 of lore of {dragupgrade} to "&8Netherite Sword &7into the <#d462ff>Dragon Slayer Sword&7."
 	set line 4 of lore of {dragupgrade} to "&7Grants <#ff5e5e>+10%% damage &7against <#a259ff>Endermen&7,"
 	set line 5 of lore of {dragupgrade} to "<#a259ff>Endermites&7, and the <#ff80f4>Ender Dragon&7."
+	apply custom model data to {dragupgrade}:
+		strings: "dragon_slayer_upgrade"
 
 	set {shard} to prismarine shard
 	set displayname of {shard} to "<#a259ff>Dragon Scale"
@@ -21,18 +25,8 @@ on load:
 	set line 4 of lore of {shard} to "&7Used in a &fSmithing Table &7to unlock the"
 	set line 5 of lore of {shard} to "<#d462ff>Dragon Slayer Sword&7 when combined with"
 	set line 6 of lore of {shard} to "&7a &8Netherite Sword &7and the <#d462ff>Tome of the Dragon Slayer&7."
-
-on damage:
-	attacker is a player
-	victim is enderman or ender dragon or endermite
-	if attacker's held item is {dragonslayersword}:
-		set damage to damage * 1.1 
-
-on death of ender dragon:
-	chance of 5%:
-		drop 1 of {dragupgrade} at position of victim
-	chance of 5%:
-		drop 1 of {shard} at position of victim
+	apply custom model data to {shard}:
+		strings: "dragon_scale"
 
 # WARP STONE
 
@@ -99,14 +93,20 @@ on load:
 	set line 4 of lore of {endupgrade} to " &9Netherite Equipment"
 	set line 5 of lore of {endupgrade} to "&7Ingredients:"
 	set line 6 of lore of {endupgrade} to " &9Enderite Ingot"
+	apply custom model data to {endupgrade}:
+		strings: "End_Upgrade_Smithing_Template"
 
 	set {rawenderite} to white dye
 	set displayname of {rawenderite} to "&eRaw Enderite"
 	set item flags of {rawenderite} to item flags
+	apply custom model data to {rawenderite}:
+		strings: "raw_enderite"
 
 	set {enderiteingot} to gray dye
 	set displayname of {enderiteingot} to "&eEnderite Ingot"
 	set item flags of {enderiteingot} to item flags
+	apply custom model data to {enderiteingot}:
+		strings: "enderite_ingot"
 
 
 
@@ -117,6 +117,8 @@ on load:
 	set max durability of {helmet} to 707
 	set item flags of {helmet} to hide dye
 	set displayname of {helmet} to "&eEnderite Helmet"
+	apply custom model data to {helmet}:
+		strings: "Enderite_Helmet"
 	
 	apply attribute modifier to {helmet}:
 		id: "minecraft:armor.helmet"
@@ -148,6 +150,8 @@ on load:
 	dye {chestplate} (247, 233, 163)
 	set max durability of {chestplate} to 892
 	set item flags of {chestplate} to hide dye
+	apply custom model data to {chestplate}:
+		strings: "Enderite_Chestplate"
 
 	apply attribute modifier to {chestplate}:
 		id: "minecraft:armor.chestplate"
@@ -179,6 +183,8 @@ on load:
 	dye {leggings} (247, 233, 163)
 	set max durability of {leggings} to 855
 	set item flags of {leggings} to hide dye
+	apply custom model data to {leggings}:
+		strings: "Enderite_Leggings"
 
 	apply attribute modifier to {leggings}:
 		id: "minecraft:armor.leggings"
@@ -210,6 +216,8 @@ on load:
 	dye {boots} (247, 233, 163)
 	set max durability of {boots} to 781
 	set item flags of {boots} to hide dye
+	apply custom model data to {boots}:
+		strings: "Enderite_Boots"
 
 	apply attribute modifier to {boots}:
 		id: "minecraft:armor.boots"

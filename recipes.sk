@@ -1,7 +1,5 @@
 on join:
-#    set {_recipes::*} to all custom recipes
-#    unlock {_recipes::*} for player
-    unlock recipes with id "end_expansion" for player
+    unlock custom recipes with id "end_expansion" for player
 
 on load:
     register smithing transform recipe:

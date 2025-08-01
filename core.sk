@@ -12,6 +12,7 @@ on load:
     set {endgive::Raw_Enderite} to "raw_enderite"
     set {endgive::Enderite_Ingot} to "enderite_ingot"
 
+
 on break of end stone:
     chance of 5%:
         send "&bRARE DROP! &eRaw Enderite &e(5%%)" to player
@@ -56,9 +57,10 @@ command /endgive <player> <text>:
             if arg-2 is "End_Upgrade_Smithing_Template":
                 give {endupgrade} to arg-1
             if arg-2 is "Raw_Enderite":
-                give {rawenedite} to arg-1
+                give {rawenderite} to arg-1
             if arg-2 is "Enderite_Ingot":
                 give {enderiteingot} to arg-1
 
 on tab complete of "endgive":
     set tab completions for position 2 to indexes of {endgive::*}
+
