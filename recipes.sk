@@ -1,69 +1,69 @@
 on join:
-    unlock custom recipes with id "end_expansion" for player
+	unlock custom recipes with id "end_expansion" for player
 
 on load:
-    register smithing transform recipe:
-        id: "end_expansion:dragon_slayer_sword"
-        result: {dragonslayersword}
-        template: {dragupgrade}
-        base: netherite sword
-        addition: {shard}
+	register smithing transform recipe:
+		id: "end_expansion:dragon_slayer_sword"
+		result: {endgive::dragon_slayer_sword}
+		template: {endgive::dragon_slayer_upgrade}
+		base: netherite sword
+		addition: {endgive::dragon_scale}
 
-    register shaped recipe:
-        id: "end_expansion:warp_stone"
-        result: {warpstone}
-        shape: "cec", "apa", "oso"
-        ingredients:
-            set ingredient of "c" to chorus fruit
-            set ingredient of "e" to ender eye
-            set ingredient of "a" to amethyst shard
-            set ingredient of "p" to ender pearl
-            set ingredient of "o" to obsidian
-            set ingredient of "s" to echo shard
+	register shaped recipe:
+		id: "end_expansion:warp_stone"
+		result: {endgive::warp_stone}
+		shape: "cec", "apa", "oso"
+		ingredients:
+			set ingredient of "c" to chorus fruit
+			set ingredient of "e" to ender eye
+			set ingredient of "a" to amethyst shard
+			set ingredient of "p" to ender pearl
+			set ingredient of "o" to obsidian
+			set ingredient of "s" to echo shard
 
-    register new furnace recipe:
-        id: "end_expansion:enderite_ingot"
-        result: {enderiteingot}
-        input: {rawenderite}
-        cooktime: 30 seconds
-        experience: 10
-        category: "misc"
+	register new furnace recipe:
+		id: "end_expansion:enderite_ingot"
+		result: {endgive::enderite_ingot}
+		input: {endgive::raw_enderite}
+		cooktime: 30 seconds
+		experience: 10
+		category: "misc"
 
-    register smithing transform recipe:
-        id: "end_expansion:enderite_helmet"
-        result: {helmet}
-        template: {endupgrade}
-        base: netherite helmet
-        addition: {enderiteingot}
-        copynbt: true
-    
-    register smithing transform recipe:
-        id: "end_expansion:enderite_chestplate"
-        result: {chestplate}
-        template: {endupgrade}
-        base: netherite chestplate
-        addition: {enderiteingot}
-    
-    register smithing transform recipe:
-        id: "end_expansion:enderite_leggings"
-        result: {leggings}
-        template: {endupgrade}
-        base: netherite leggings
-        addition: {enderiteingot}
+	register smithing transform recipe:
+		id: "end_expansion:enderite_helmet"
+		result: {endgive::enderite_helmet}
+		template: {endgive::end_upgrade_template}
+		base: netherite helmet
+		addition: {endgive::enderite_ingot}
+		copynbt: true
+	
+	register smithing transform recipe:
+		id: "end_expansion:enderite_chestplate"
+		result: {endgive::enderite_chestplate}
+		template: {endgive::end_upgrade_template}
+		base: netherite chestplate
+		addition: {endgive::enderite_ingot}
+		
+	register smithing transform recipe:
+		id: "end_expansion:enderite_leggings"
+		result: {endgive::enderite_leggings}
+		template: {endgive::end_upgrade_template}
+		base: netherite leggings
+		addition: {endgive::enderite_ingot}
 
-    register smithing transform recipe:
-        id: "end_expansion:enderite_boots"
-        result: {boots}
-        template: {endupgrade}
-        base: netherite boots
-        addition: {enderiteingot}
-    
-    register new shaped recipe:
-        id: "end_expansion:enderite_upgrade_template"
-        result: {endupgrade}
-        shape: "sts", "ses", "sss"
-        category: "equipment"
-        ingredients:
-            set ingredient of "s" to netherite scrap
-            set ingredient of "t" to netherite upgrade smithing template
-            set ingredient of "e" to {enderiteingot}
+	register smithing transform recipe:
+		id: "end_expansion:enderite_boots"
+		result: {endgive::enderite_boots}
+		template: {endgive::end_upgrade_template}
+		base: netherite boots
+		addition: {endgive::enderite_ingot}
+		
+	register new shaped recipe:
+		id: "end_expansion:enderite_upgrade_template"
+		result: {endgive::end_upgrade_template}
+		shape: "sts", "ses", "sss"
+		category: "equipment"
+		ingredients:
+			set ingredient of "s" to netherite scrap
+			set ingredient of "t" to netherite upgrade smithing template
+			set ingredient of "e" to {endgive::enderite_ingot}

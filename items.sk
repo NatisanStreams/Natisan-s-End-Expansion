@@ -1,48 +1,55 @@
+on load:
+	delete {endgive::*}
+
 # DRAGON SLAYER SWORD & REQUIRED ITEMS
 
 on load:
-	set {dragonslayersword} to netherite sword
-	set displayname of {dragonslayersword} to "<#d462ff>Dragon Slayer Sword"
-	set line 2 of lore of {dragonslayersword} to "&7Deals &c+10%% &7damage to &5Endermen&7, &5Endermites&7," 
-	set line 3 of lore of {dragonslayersword} to "&7and the &dEnder Dragon&7."
-	set line 4 of lore of {dragonslayersword} to ""
-	apply custom model data to {dragonslayersword}:
+	set {_dragon_slayer_sword} to netherite sword
+	set displayname of {_dragon_slayer_sword} to "<#d462ff>Dragon Slayer Sword"
+	set line 2 of lore of {_dragon_slayer_sword} to "&7Deals &c+10%% &7damage to &5Endermen&7, &5Endermites&7," 
+	set line 3 of lore of {_dragon_slayer_sword} to "&7and the &dEnder Dragon&7."
+	set line 4 of lore of {_dragon_slayer_sword} to ""
+	apply custom model data to {_dragon_slayer_sword}:
 		strings: "dragon_slayer_sword"
+	set {endgive::dragon_slayer_sword} to {_dragon_slayer_sword}
 
-	set {dragupgrade} to book
-	set displayname of {dragupgrade} to "<#d462ff>Tome of the Dragon Slayer"
-	set line 1 of lore of {dragupgrade} to "&7Use in a &fSmithing Table &7to upgrade a"
-	set line 2 of lore of {dragupgrade} to "&8Netherite Sword &7into the <#d462ff>Dragon Slayer Sword&7."
-	set line 4 of lore of {dragupgrade} to "&7Grants <#ff5e5e>+10%% damage &7against <#a259ff>Endermen&7,"
-	set line 5 of lore of {dragupgrade} to "<#a259ff>Endermites&7, and the <#ff80f4>Ender Dragon&7."
-	apply custom model data to {dragupgrade}:
+	set {_dragon_slayer_upgrade} to book
+	set displayname of {_dragon_slayer_upgrade} to "<#d462ff>Tome of the Dragon Slayer"
+	set line 1 of lore of {_dragon_slayer_upgrade} to "&7Use in a &fSmithing Table &7to upgrade a"
+	set line 2 of lore of {_dragon_slayer_upgrade} to "&8Netherite Sword &7into the <#d462ff>Dragon Slayer Sword&7."
+	set line 4 of lore of {_dragon_slayer_upgrade} to "&7Grants <#ff5e5e>+10%% damage &7against <#a259ff>Endermen&7,"
+	set line 5 of lore of {_dragon_slayer_upgrade} to "<#a259ff>Endermites&7, and the <#ff80f4>Ender Dragon&7."
+	apply custom model data to {_dragon_slayer_upgrade}:
 		strings: "dragon_slayer_upgrade"
+	set {endgive::dragon_slayer_upgrade} to {_dragon_slayer_upgrade}
 
-	set {shard} to prismarine shard
-	set displayname of {shard} to "<#a259ff>Dragon Scale"
-	set line 1 of lore of {shard} to "&7A shard of the Ender Dragon's ancient armor,"
-	set line 2 of lore of {shard} to "&7still pulsing with void energy."
-	set line 4 of lore of {shard} to "&7Used in a &fSmithing Table &7to unlock the"
-	set line 5 of lore of {shard} to "<#d462ff>Dragon Slayer Sword&7 when combined with"
-	set line 6 of lore of {shard} to "&7a &8Netherite Sword &7and the <#d462ff>Tome of the Dragon Slayer&7."
-	apply custom model data to {shard}:
+	set {_dragon_scale} to prismarine shard
+	set displayname of {_dragon_scale} to "<#a259ff>Dragon Scale"
+	set line 1 of lore of {_dragon_scale} to "&7A shard of the Ender Dragon's ancient armor,"
+	set line 2 of lore of {_dragon_scale} to "&7still pulsing with void energy."
+	set line 4 of lore of {_dragon_scale} to "&7Used in a &fSmithing Table &7to unlock the"
+	set line 5 of lore of {_dragon_scale} to "<#d462ff>Dragon Slayer Sword&7 when combined with"
+	set line 6 of lore of {_dragon_scale} to "&7a &8Netherite Sword &7and the <#d462ff>Tome of the Dragon Slayer&7."
+	apply custom model data to {_dragon_scale}:
 		strings: "dragon_scale"
+	set {endgive::dragon_scale} to {_dragon_scale}
 
 # WARP STONE
 
 on load:
-	set {warpstone} to an ender pearl
-	set displayname of {warpstone} to "<#9b59b6>Warp Stone"
-	set line 1 of lore of {warpstone} to "&7Shift + Right Click to bind location."
-	set line 2 of lore of {warpstone} to "&7Right Click to teleport back and consume the item."
-	set line 4 of lore of {warpstone} to "<#ff80f4>One-time use only."
-	set line 6 of lore of {warpstone} to "&7Location:"
-	apply custom model data to {warpstone}:
+	set {_warp_stone} to an ender pearl
+	set displayname of {_warp_stone} to "<#9b59b6>Warp Stone"
+	set line 1 of lore of {_warp_stone} to "&7Shift + Right Click to bind location."
+	set line 2 of lore of {_warp_stone} to "&7Right Click to teleport back and consume the item."
+	set line 4 of lore of {_warp_stone} to "<#ff80f4>One-time use only."
+	set line 6 of lore of {_warp_stone} to "&7Location:"
+	apply custom model data to {_warp_stone}:
 		floats: 3
 		strings: "warp_stone"
-	set max stack size component of {warpstone} to 1
-	enchant {warpstone} with mending
-	set item flags of {warpstone} to hide enchantments
+	set max stack size component of {_warp_stone} to 1
+	enchant {_warp_stone} with mending
+	set item flags of {_warp_stone} to hide enchantments
+	set {endgive::warp_stone} to {_warp_stone}
 
 on right click:
 	if player's held item is an ender pearl:
@@ -85,157 +92,164 @@ on right click:
 # ENDERITE ARMOR & REQUIREMENTS
 
 on load:
-	set {endupgrade} to netherite upgrade smithing template
-	set displayname of {endupgrade} to "&eEnd Upgrade Smithing Template"
-	set item flags of {endupgrade} to item flags
-	set line 1 of lore of {endupgrade} to "&7Smithing Template"
-	set line 3 of lore of {endupgrade} to "&7Applies to:"
-	set line 4 of lore of {endupgrade} to " &9Netherite Equipment"
-	set line 5 of lore of {endupgrade} to "&7Ingredients:"
-	set line 6 of lore of {endupgrade} to " &9Enderite Ingot"
-	apply custom model data to {endupgrade}:
+	set {_end_upgrade_template} to netherite upgrade smithing template
+	set displayname of {_end_upgrade_template} to "&eEnd Upgrade Template"
+	set item flags of {_end_upgrade_template} to item flags
+	set line 1 of lore of {_end_upgrade_template} to "&7Smithing Template"
+	set line 3 of lore of {_end_upgrade_template} to "&7Applies to:"
+	set line 4 of lore of {_end_upgrade_template} to " &9Netherite Equipment"
+	set line 5 of lore of {_end_upgrade_template} to "&7Ingredients:"
+	set line 6 of lore of {_end_upgrade_template} to " &9Enderite Ingot"
+	apply custom model data to {_end_upgrade_template}:
 		strings: "End_Upgrade_Smithing_Template"
+	set {endgive::end_upgrade_template} to {_end_upgrade_template}
 
-	set {rawenderite} to white dye
-	set displayname of {rawenderite} to "&eRaw Enderite"
-	set item flags of {rawenderite} to item flags
-	apply custom model data to {rawenderite}:
+	set {_raw_enderite} to white dye
+	set displayname of {_raw_enderite} to "&eRaw Enderite"
+	set item flags of {_raw_enderite} to item flags
+	apply custom model data to {_raw_enderite}:
 		strings: "raw_enderite"
+	set {endgive::raw_enderite} to {_raw_enderite}
 
-	set {enderiteingot} to gray dye
-	set displayname of {enderiteingot} to "&eEnderite Ingot"
-	set item flags of {enderiteingot} to item flags
-	apply custom model data to {enderiteingot}:
+	set {_enderite_ingot} to gray dye
+	set displayname of {_enderite_ingot} to "&eEnderite Ingot"
+	set item flags of {_enderite_ingot} to item flags
+	apply custom model data to {_enderite_ingot}:
 		strings: "enderite_ingot"
+	set {endgive::enderite_ingot} to {_enderite_ingot}
 
 
 
 
 
-	set {helmet} to leather helmet
-	dye {helmet} (247, 233, 163)
-	set max durability of {helmet} to 707
-	set item flags of {helmet} to hide dye
-	set displayname of {helmet} to "&eEnderite Helmet"
-	apply custom model data to {helmet}:
+	set {_enderite_helmet} to leather helmet
+	dye {_enderite_helmet} (247, 233, 163)
+	set max durability of {_enderite_helmet} to 707
+	set item flags of {_enderite_helmet} to hide dye
+	set displayname of {_enderite_helmet} to "&eEnderite Helmet"
+	apply custom model data to {_enderite_helmet}:
 		strings: "Enderite_Helmet"
 	
-	apply attribute modifier to {helmet}:
+	apply attribute modifier to {_enderite_helmet}:
 		id: "minecraft:armor.helmet"
 		attribute: armor
 		amount: 5.0
 		slot: head_slot_group
 		operation: add_number
 	
-	apply attribute modifier to {helmet}:
+	apply attribute modifier to {_enderite_helmet}:
 		id: "minecraft:armor.helmet"
 		attribute: armor toughness
 		amount: 4
 		slot: head_slot_group
 		operation: add_number
 	
-	apply attribute modifier to {helmet}:
+	apply attribute modifier to {_enderite_helmet}:
 		id: "minecraft:armor.helmet"
 		attribute: knockback resistance
 		amount: 0.2
 		slot: head_slot_group
 		operation: add_number
 
+	set {endgive::enderite_helmet} to {_enderite_helmet}
 
 
 
 
-	set {chestplate} to leather chestplate
-	set displayname of {chestplate} to "&eEnderite Chestplate"
-	dye {chestplate} (247, 233, 163)
-	set max durability of {chestplate} to 892
-	set item flags of {chestplate} to hide dye
-	apply custom model data to {chestplate}:
+	set {_enderite_chestplate} to leather chestplate
+	set displayname of {_enderite_chestplate} to "&eEnderite Chestplate"
+	dye {_enderite_chestplate} (247, 233, 163)
+	set max durability of {_enderite_chestplate} to 892
+	set item flags of {_enderite_chestplate} to hide dye
+	apply custom model data to {_enderite_chestplate}:
 		strings: "Enderite_Chestplate"
 
-	apply attribute modifier to {chestplate}:
+	apply attribute modifier to {_enderite_chestplate}:
 		id: "minecraft:armor.chestplate"
 		attribute: armor
 		amount: 10.0
 		slot: chest_slot_group
 		operation: add_number
 
-	apply attribute modifier to {chestplate}:
+	apply attribute modifier to {_enderite_chestplate}:
 		id: "minecraft:armor.chestplate"
 		attribute: armor toughness
 		amount: 4
 		slot: chest_slot_group
 		operation: add_number
 
-	apply attribute modifier to {chestplate}:
+	apply attribute modifier to {_enderite_chestplate}:
 		id: "minecraft:armor.chestplate"
 		attribute: knockback resistance
 		amount: 0.2
 		slot: chest_slot_group
 		operation: add_number
 
+	set {endgive::enderite_chestplate} to {_enderite_chestplate}
 
 
 
-
-	set {leggings} to leather leggings
-	set displayname of {leggings} to "&eEnderite Leggings"
-	dye {leggings} (247, 233, 163)
-	set max durability of {leggings} to 855
-	set item flags of {leggings} to hide dye
-	apply custom model data to {leggings}:
+	set {_enderite_leggings} to leather leggings
+	set displayname of {_enderite_leggings} to "&eEnderite Leggings"
+	dye {_enderite_leggings} (247, 233, 163)
+	set max durability of {_enderite_leggings} to 855
+	set item flags of {_enderite_leggings} to hide dye
+	apply custom model data to {_enderite_leggings}:
 		strings: "Enderite_Leggings"
 
-	apply attribute modifier to {leggings}:
+	apply attribute modifier to {_enderite_leggings}:
 		id: "minecraft:armor.leggings"
 		attribute: armor
 		amount: 8
 		slot: legs_slot_group
 		operation: add_number
 
-	apply attribute modifier to {leggings}:
+	apply attribute modifier to {_enderite_leggings}:
 		id: "minecraft:armor.leggings"
 		attribute: armor toughness
 		amount: 4
 		slot: legs_slot_group
 		operation: add_number
 
-	apply attribute modifier to {leggings}:
+	apply attribute modifier to {_enderite_leggings}:
 		id: "minecraft:armor.leggings"
 		attribute: knockback resistance
 		amount: 0.2
 		slot: legs_slot_group
 		operation: add_number
 
+	set {endgive::enderite_leggings} to {_enderite_leggings}
 
 
 
 
-	set {boots} to leather boots
-	set displayname of {boots} to "&eEnderite Boots"
-	dye {boots} (247, 233, 163)
-	set max durability of {boots} to 781
-	set item flags of {boots} to hide dye
-	apply custom model data to {boots}:
+	set {_enderite_boots} to leather boots
+	set displayname of {_enderite_boots} to "&eEnderite Boots"
+	dye {_enderite_boots} (247, 233, 163)
+	set max durability of {_enderite_boots} to 781
+	set item flags of {_enderite_boots} to hide dye
+	apply custom model data to {_enderite_boots}:
 		strings: "Enderite_Boots"
 
-	apply attribute modifier to {boots}:
+	apply attribute modifier to {_enderite_boots}:
 		id: "minecraft:armor.boots"
 		attribute: armor
 		amount: 5
 		slot: feet_slot_group
 		operation: add_number
 	
-	apply attribute modifier to {boots}:
+	apply attribute modifier to {_enderite_boots}:
 		id: "minecraft:armor.boots"
 		attribute: armor toughness
 		amount: 4
 		slot: feet_slot_group
 		operation: add_number
 
-	apply attribute modifier to {boots}:
+	apply attribute modifier to {_enderite_boots}:
 		id: "minecraft:armor.boots"
 		attribute: knockback resistance
 		amount: 0.2
 		slot: feet_slot_group
 		operation: add_number
+
+	set {endgive::enderite_boots} to {_enderite_boots}
