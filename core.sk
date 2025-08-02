@@ -1,66 +1,35 @@
-on load:
-    delete {endgive::*}
-    set {endgive::Warp_Stone} to "warp_stone"
-    set {endgive::Dragon_Slayer_Sword} to "dragon_slayer_sword"
-    set {endgive::Dragon_Slayer_Upgrade} to "dragon_slayer_upgrade"
-    set {endgive::Dragon_Scale} to "warp_stone"
-    set {endgive::Enderite_Helmet} to "enderite_helmet"
-    set {endgive::Enderite_Chestplate} to "enderite_chestplate"
-    set {endgive::Enderite_Leggings} to "enderite_leggings"
-    set {endgive::Enderite_Boots} to "enderite_boots"
-    set {endgive::End_Upgrade_Smithing_Template} to "end_upgrade_smithing_template"
-    set {endgive::Raw_Enderite} to "raw_enderite"
-    set {endgive::Enderite_Ingot} to "enderite_ingot"
-
-
 on break of end stone:
-    chance of 5%:
-        send "&bRARE DROP! &eRaw Enderite &e(5%%)" to player
-        set {_e::*} to give or return {rawenderite} to player
-        if {_e::*} is set:
-            drop {_e::*} at player without velocity
-            send "&cInventory full! Item dropped at your feet!"
+	chance of 5%:
+		send "&bRARE DROP! &eRaw Enderite &e(5%%)" to player
+		set {_e::*} to give or return {endgive::raw_enderite} to player
+		if {_e::*} is set:
+			drop {_e::*} at player without velocity
+			send "&cInventory full! Item dropped at your feet!"
 
 on death of ender dragon:
-    chance of 5%:
-        drop 1 of {dragupgrade} at position of victim
-    chance of 5%:
-        drop 1 of {shard} at position of victim
+	chance of 5%:
+		drop 1 of {endgive::dragon_slayer_upgrade} at position of victim
+	chance of 5%:
+		drop 1 of {endgive::dragon_scale} at position of victim
 
 
 on damage:
-    attacker is a player
-    victim is enderman or ender dragon or endermite
-    if attacker's held item is {dragonslayersword}:
-        set damage to damage * 1.1 
+	attacker is a player
+	victim is enderman or ender dragon or endermite
+	if attacker's held item is {endgive::dragon_slayer_sword}:
+		set damage to damage * 1.1
 
 command /endgive <player> <text>:
-    permission: endexpansion.admin
-    trigger:
-        if arg-1 is a player:
-            if arg-2 is "warp_stone":
-                give {warpstone} to arg-1
-            if arg-2 is "Dragon_Slayer_Sword":
-                give {dragonslayersword} to arg-1
-            if arg-2 is "Dragon_Slayer_Upgrade":
-                give {dragupgrade} to arg-1
-            if arg-2 is "Dragon_Scale":
-                give {shard} to arg-1
-            if arg-2 is "Enderite_Helmet":
-                give {helmet} to arg-1
-            if arg-2 is "Enderite_Chestplate":
-                give {chestplate} to arg-1
-            if arg-2 is "Enderite_Leggings":
-                give {leggings} to arg-1
-            if arg-2 is "Enderite_Boots":
-                give {boots} to arg-1
-            if arg-2 is "End_Upgrade_Smithing_Template":
-                give {endupgrade} to arg-1
-            if arg-2 is "Raw_Enderite":
-                give {rawenderite} to arg-1
-            if arg-2 is "Enderite_Ingot":
-                give {enderiteingot} to arg-1
+	permission: endexpansion.admin
+	trigger:
+		set {_itemlist::*} to (indexes of {endgive::*})
+		if {_itemlist::*} does not contain arg-2:
+			send "&cInvalid item."
+			stop
+
+		set {_item} to {endgive::%arg-2%}
+		give {_item} to arg-1
+		send "&aGiven %name of {_item}%&a to %arg-1%."
 
 on tab complete of "endgive":
-    set tab completions for position 2 to indexes of {endgive::*}
-
+	set tab completions for position 2 to indexes of {endgive::*}
