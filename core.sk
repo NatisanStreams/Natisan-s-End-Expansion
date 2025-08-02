@@ -1,6 +1,6 @@
 on break of end stone:
-	chance of 5%:
-		send "&bRARE DROP! &eRaw Enderite &e(5%%)" to player
+	chance of 0.25%:
+		send "&bRARE DROP! &eRaw Enderite &e(0.25%%)" to player
 		set {_e::*} to give or return {endgive::raw_enderite} to player
 		if {_e::*} is set:
 			drop {_e::*} at player without velocity
@@ -9,8 +9,10 @@ on break of end stone:
 on death of ender dragon:
 	chance of 5%:
 		drop 1 of {endgive::dragon_slayer_upgrade} at position of victim
+		send "&bRARE DROP! &eTome of the Dragon Slayer &e(5%%)"
 	chance of 5%:
 		drop 1 of {endgive::dragon_scale} at position of victim
+		send "&bRARE DROP! &eDragon Scale &e(5%%)"
 
 
 on damage:
