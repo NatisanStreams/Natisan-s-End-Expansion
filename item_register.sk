@@ -63,9 +63,6 @@ on load:
 	set {_item} to an ender pearl
 	set max stack size component of {_item} to 1
 	set glint of {_item} to true
-	apply use cooldown to {_item}:
-		seconds: 5 minutes
-		group: "end_expansion:%{_id}%"
 
 	set {_name} to "{@purp2}Warp Stone"
 	set {_lore::1} to "&7Shift + Right Click to bind location."
@@ -111,7 +108,8 @@ on load:
 
 	set {_id} to "enderite_helmet"
 	set {_item} to leather helmet
-	with_armor_options({_item}, {_armor_color}, 707)
+	dye {_item} {_armor_color}
+	with_armor_options({_item}, 707)
 	give_attribute({_item}, armor, 5.0, head_slot_group)
 	give_attribute({_item}, armor toughness, 4.0, head_slot_group)
 	give_attribute({_item}, knockback resistance, 0.2, head_slot_group)
@@ -122,7 +120,8 @@ on load:
 
 	set {_id} to "enderite_chestplate"
 	set {_item} to leather chestplate
-	with_armor_options({_item}, {_armor_color}, 892)
+	dye {_item} {_armor_color}
+	with_armor_options({_item}, 892)
 	give_attribute({_item}, armor, 10.0, chest_slot_group)
 	give_attribute({_item}, armor toughness, 4.0, chest_slot_group)
 	give_attribute({_item}, knockback resistance, 0.2, chest_slot_group)
@@ -133,7 +132,8 @@ on load:
 
 	set {_id} to "enderite_leggings"
 	set {_item} to leather leggings
-	with_armor_options({_item}, {_armor_color}, 855)
+	dye {_item} {_armor_color}
+	with_armor_options({_item}, 855)
 	give_attribute({_item}, armor, 8.0, legs_slot_group)
 	give_attribute({_item}, armor toughness, 4.0, legs_slot_group)
 	give_attribute({_item}, knockback resistance, 0.2, legs_slot_group)
@@ -144,7 +144,8 @@ on load:
 
 	set {_id} to "enderite_boots"
 	set {_item} to leather boots
-	with_armor_options({_item}, {_armor_color}, 781)
+	dye {_item} {_armor_color}
+	with_armor_options({_item}, 781)
 	give_attribute({_item}, armor, 5.0, feet_slot_group)
 	give_attribute({_item}, armor toughness, 4.0, feet_slot_group)
 	give_attribute({_item}, knockback resistance, 0.2, feet_slot_group)
@@ -152,8 +153,7 @@ on load:
 	set {_name} to "&eEnderite Boots"
 	register_item({_item}, {_id}, {_name})
 
-local function with_armor_options(item: item, color: color, durability: integer):
-	set dyed color of {_item} to {_color}
+local function with_armor_options(item: item, durability: integer):
 	set max durability of {_item} to {_durability}
 	set item flags of {_item} to hide dye
 

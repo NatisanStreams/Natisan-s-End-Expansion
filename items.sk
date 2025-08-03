@@ -14,17 +14,18 @@ function activate_warp_stone(p: player):
 	set {_warp} to get_warp_position({_p})
 	if {_p} is not sneaking:
 		stop if precondition({_p}, whether {_warp} is not set, "&7Set a location before teleporting") = true
-
+		set {_since} to time since {-warp_cooldown::%{_p}%}
+		stop if precondition({_p}, whether {_since} < 5 minutes, "&eWarp on cooldown &c%{_since}%/5 minutes") = true
+		set {-warp_cooldown::%{_p}%} to now
 		teleport {_p} to {_warp}
-		set_warp_position({_p}, {_})
+		delete {end_expansion::warp_position::%{_p}%}
 		set tool of {_p} to air
 
 	else:
-
-		stop if precondition({_p}, whether (cooldown of (tool of {_p}) for {_p} is not 0 seconds)) = true
 		stop if precondition({_p}, whether ({_warp} is set), "&7Your location is already set") = true
 
 		set {_pos} to location of {_p}
+
 		set_warp_position({_p}, {_pos})
 		set {_location} to get_pretty_location({_pos})
 		send "&7Location set to %{_location}%" to {_p}
