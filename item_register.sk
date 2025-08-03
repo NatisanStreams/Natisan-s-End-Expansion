@@ -1,0 +1,166 @@
+#> Registers an created item under an id, with a name and optional lore
+#> stored in {-end_expansion::items::%id%}
+#>
+#> @param item The beforehand made item
+#> @param id The identifier that can be used to reference the item
+#> @param name The formatted name of the item
+#> @param lore The lore of the item in strings
+function register_item(item: item, id: string, name: string, lore: strings = {_}):
+	set name of {_item} to {_name}
+	set lore of {_item} to {_lore::*}
+	set string tag "id" of (custom nbt of {_item}) to {_id}
+	apply custom model data to {_item}:
+		strings: {_id}
+	set {-end_expansion::items::%{_id}%} to {_item}
+
+options:
+	pink: <##ff80f4>
+	purp0: <##d462ff>
+	purp1: <##a259ff>
+	purp2: <##9b59b6>
+	red: <##ff5e5e>
+
+on load:
+	delete {-end_expansion::items::*}
+
+	set {_id} to "dragon_slayer_sword"
+	set {_item} to netherite sword
+
+	set {_dragon_slayer_name} to "{@purp0}Dragon Slayer Sword"
+	set {_lore::1} to ""
+	set {_lore::2} to "&7Deals &c+10%% &7damage to &5Endermen&7, &5Endermites&7,"
+	set {_lore::3} to "&7and the &dEnder Dragon&7."
+	set {_lore::4} to ""
+	register_item({_item}, {_id}, {_dragon_slayer_name}, {_lore::*})
+
+
+	set {_id} to "dragon_slayer_upgrade"
+	set {_item} to book
+
+	set {_tome_name} to "{@purp0}Tome of the Dragon Slayer"
+	set {_lore::1} to "&7Use in a &fSmithing Table &7to upgrade a"
+	set {_lore::2} to "&8Netherite Sword &7into the %{_dragon_slayer_name}%&7."
+	set {_lore::3} to ""
+	set {_lore::4} to "&7Grants {@red}+10%% damage &7against {@purp1}Endermen&7,"
+	set {_lore::5} to "Endermites&7, and the {@pink}Ender Dragon&7."
+	register_item({_item}, {_id}, {_tome_name}, {_lore::*})
+
+
+	set {_id} to "dragon_scale"
+	set {_item} to prismarine shard
+
+	set {_name} to "{@purp1}Dragon Scale"
+	set {_lore::1} to "&7A shard of the Ender Dragon's ancient armor,"
+	set {_lore::2} to "&7still pulsing with void energy."
+	set {_lore::3} to ""
+	set {_lore::4} to "&7Used in a &fSmithing Table &7to unlock the"
+	set {_lore::5} to "%{_dragon_slayer_name}%&7 when combined with"
+	set {_lore::6} to "&7a &8Netherite Sword &7and the %{_tome_name}%&7."
+	register_item({_item}, {_id}, {_name}, {_lore::*})
+
+
+	set {_id} to "warp_stone"
+	set {_item} to an ender pearl
+	set max stack size component of {_item} to 1
+	set glint of {_item} to true
+	apply use cooldown to {_item}:
+		seconds: 5 minutes
+		group: "end_expansion:%{_id}%"
+
+	set {_name} to "{@purp2}Warp Stone"
+	set {_lore::1} to "&7Shift + Right Click to bind location."
+	set {_lore::2} to "&7Right Click to teleport back and consume the item."
+	set {_lore::3} to ""
+	set {_lore::4} to "{@pink}One-time use only."
+	set {_lore::5} to ""
+	set {_lore::6} to "&7Location:"
+	register_item({_item}, {_id}, {_name}, {_lore::*})
+
+
+	set {_id} to "end_upgrade_smithing_template"
+	set {_item} to netherite upgrade smithing template
+	set item flags of {_item} to all item flags
+
+	set {_name} to "&eEnd Upgrade Smithing Template"
+	set {_lore::1} to "&7Smithing Template"
+	set {_lore::2} to ""
+	set {_lore::3} to "&7Applies to:"
+	set {_lore::4} to " &9Netherite Equipment"
+	set {_lore::5} to "&7Ingredients:"
+	set {_lore::6} to " &9Enderite Ingot"
+	register_item({_item}, {_id}, {_name}, {_lore::*})
+
+
+	set {_id} to "raw_enderite"
+	set {_item} to white dye
+	set item flags of {_item} to item flags
+
+	set {_name} to "&eRaw Enderite"
+	register_item({_item}, {_id}, {_name})
+
+
+	set {_id} to "enderite_ingot"
+	set {_item} to gray dye
+	set item flags of {_item} to item flags
+
+	set {_name} to "&eEnderite Ingot"
+	register_item({_item}, {_id}, {_name})
+
+	# ARMOR
+	set {_armor_color} to rgb(247, 233, 163)
+
+	set {_id} to "enderite_helmet"
+	set {_item} to leather helmet
+	with_armor_options({_item}, {_armor_color}, 707)
+	give_attribute({_item}, armor, 5.0, head_slot_group)
+	give_attribute({_item}, armor toughness, 4.0, head_slot_group)
+	give_attribute({_item}, knockback resistance, 0.2, head_slot_group)
+
+	set {_name} to "&eEnderite Helmet"
+	register_item({_item}, {_id}, {_name})
+
+
+	set {_id} to "enderite_chestplate"
+	set {_item} to leather chestplate
+	with_armor_options({_item}, {_armor_color}, 892)
+	give_attribute({_item}, armor, 10.0, chest_slot_group)
+	give_attribute({_item}, armor toughness, 4.0, chest_slot_group)
+	give_attribute({_item}, knockback resistance, 0.2, chest_slot_group)
+
+	set {_name} to "&eEnderite Chestplate"
+	register_item({_item}, {_id}, {_name})
+
+
+	set {_id} to "enderite_leggings"
+	set {_item} to leather leggings
+	with_armor_options({_item}, {_armor_color}, 855)
+	give_attribute({_item}, armor, 8.0, legs_slot_group)
+	give_attribute({_item}, armor toughness, 4.0, legs_slot_group)
+	give_attribute({_item}, knockback resistance, 0.2, legs_slot_group)
+
+	set {_name} to "&eEnderite Leggings"
+	register_item({_item}, {_id}, {_name})
+
+
+	set {_id} to "enderite_boots"
+	set {_item} to leather boots
+	with_armor_options({_item}, {_armor_color}, 781)
+	give_attribute({_item}, armor, 5.0, feet_slot_group)
+	give_attribute({_item}, armor toughness, 4.0, feet_slot_group)
+	give_attribute({_item}, knockback resistance, 0.2, feet_slot_group)
+
+	set {_name} to "&eEnderite Boots"
+	register_item({_item}, {_id}, {_name})
+
+local function with_armor_options(item: item, color: color, durability: integer):
+	set dyed color of {_item} to {_color}
+	set max durability of {_item} to {_durability}
+	set item flags of {_item} to hide dye
+
+local function give_attribute(item: item, attribute: attributetype, amount: number, slot: equipmentslotgroup, operation: attributeoperation = add_number):
+	apply attribute modifier to {_item}:
+		id: "minecraft:%{_slot}%"
+		attribute: {_attribute}
+		amount: {_amount}
+		slot: {_slot}
+		operation: {_operation}

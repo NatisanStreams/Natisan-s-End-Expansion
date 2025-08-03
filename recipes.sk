@@ -1,17 +1,31 @@
+using for loops
+
 on join:
 	unlock custom recipes with id "end_expansion" for player
 
 on load:
 	register smithing transform recipe:
 		id: "end_expansion:dragon_slayer_sword"
-		result: {endgive::dragon_slayer_sword}
-		template: {endgive::dragon_slayer_upgrade}
+		result: get_item("dragon_slayer_sword")
+		template: get_item("end_upgrade_smithing_template")
 		base: netherite sword
-		addition: {endgive::dragon_scale}
+		addition: get_item("dragon_scale")
+
+	set {_armor::helmet} to netherite helmet
+	set {_armor::chestplate} to netherite chestplate
+	set {_armor::leggings} to netherite leggings
+	set {_armor::boots} to netherite boots
+	for {_armor_type}, {_piece} in {_armor::*}:
+		register smithing transform recipe:
+			id: "end_expansion:enderite_%{_armor_type}%"
+			result: get_item("enderite_%{_armor_type}%")
+			template: get_item("end_upgrade_smithing_template")
+			base: {_piece}
+			addition: get_item("enderite_ingot")
 
 	register shaped recipe:
 		id: "end_expansion:warp_stone"
-		result: {endgive::warp_stone}
+		result: get_item("warp_stone")
 		shape: "cec", "apa", "oso"
 		ingredients:
 			set ingredient of "c" to chorus fruit
@@ -23,47 +37,18 @@ on load:
 
 	register new furnace recipe:
 		id: "end_expansion:enderite_ingot"
-		result: {endgive::enderite_ingot}
-		input: {endgive::raw_enderite}
+		result: get_item("enderite_ingot")
+		input: get_item("raw_enderite")
 		cooktime: 30 seconds
 		experience: 10
 		category: "misc"
 
-	register smithing transform recipe:
-		id: "end_expansion:enderite_helmet"
-		result: {endgive::enderite_helmet}
-		template: {endgive::end_upgrade_template}
-		base: netherite helmet
-		addition: {endgive::enderite_ingot}
-		copynbt: true
-	
-	register smithing transform recipe:
-		id: "end_expansion:enderite_chestplate"
-		result: {endgive::enderite_chestplate}
-		template: {endgive::end_upgrade_template}
-		base: netherite chestplate
-		addition: {endgive::enderite_ingot}
-		
-	register smithing transform recipe:
-		id: "end_expansion:enderite_leggings"
-		result: {endgive::enderite_leggings}
-		template: {endgive::end_upgrade_template}
-		base: netherite leggings
-		addition: {endgive::enderite_ingot}
-
-	register smithing transform recipe:
-		id: "end_expansion:enderite_boots"
-		result: {endgive::enderite_boots}
-		template: {endgive::end_upgrade_template}
-		base: netherite boots
-		addition: {endgive::enderite_ingot}
-		
 	register new shaped recipe:
-		id: "end_expansion:enderite_upgrade_template"
-		result: {endgive::end_upgrade_template}
+		id: "end_expansion:end_upgrade_smithing_template"
+		result: get_item("end_upgrade_smithing_template")
 		shape: "sts", "ses", "sss"
 		category: "equipment"
 		ingredients:
 			set ingredient of "s" to netherite scrap
 			set ingredient of "t" to netherite upgrade smithing template
-			set ingredient of "e" to {endgive::enderite_ingot}
+			set ingredient of "e" to get_item("enderite_ingot")

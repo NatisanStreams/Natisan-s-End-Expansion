@@ -1,37 +1,43 @@
 on break of end stone:
-	chance of 0.25%:
-		send "&bRARE DROP! &eRaw Enderite &e(0.25%%)" to player
-		set {_e::*} to give or return {endgive::raw_enderite} to player
-		if {_e::*} is set:
-			drop {_e::*} at player without velocity
-			send "&cInventory full! Item dropped at your feet!"
+	custom_drop(player, "raw_enderite", "&bRARE", 0.25, 1, player)
 
 on death of ender dragon:
-	chance of 5%:
-		drop 1 of {endgive::dragon_slayer_upgrade} at position of victim
-		send "&bRARE DROP! &eTome of the Dragon Slayer &e(5%%)"
-	chance of 5%:
-		drop 1 of {endgive::dragon_scale} at position of victim
-		send "&bRARE DROP! &eDragon Scale &e(5%%)"
+	custom_drop(location of victim, "dragon_slayer_upgrade", "&bRARE", 5, 1, attacker)
+	custom_drop(location of victim, "dragon_scale", "&bRARE", 5, 1, attacker)
 
+#> Generic drop function to cover all cases
+#> of drops to not repeat code
+function custom_drop(pos: location, id: string, type: string, chance: number, amount: integer, send_to: entity = {_}, give_to: player = {_}) :: boolean:
+	# inversion of chance
+	if chance of (100 - {_chance})%:
+		return false
 
-on damage:
-	attacker is a player
-	victim is enderman or ender dragon or endermite
-	if attacker's held item is {endgive::dragon_slayer_sword}:
-		set damage to damage * 1.1
+	set {_item} to get_item({_id})
+	set {_item_stack} to {_amount} of {_item}
+	if {_give_to} is set:
+		set {_item_entities::*} to give or return {_item_stack} to {_give_to}
+		if {_item_entities::*} is set:
+			drop {_item_entities::*} at {_give_to} without velocity
+			send "&cInventory full! Item dropped at your feet!" to {_give_to}
+	else:
+		drop {_item_stack} at {_pos}
 
-command /endgive <player> <text>:
+	send "%{_type}% DROP! &e%unformatted name of {_item}% &e(%{_chance}%%%)" to {_send_to}
+	return true
+
+on damage of (enderman, ender dragon or endermite) by player:
+	if get_id(tool of attacker) != "dragon_slayer_sword":
+		stop
+	set damage to damage * 1.1
+
+command /endgive <p: player> <id: text> [<amount: integer = 1>]:
 	permission: endexpansion.admin
 	trigger:
-		set {_itemlist::*} to (indexes of {endgive::*})
-		if {_itemlist::*} does not contain arg-2:
-			send "&cInvalid item."
-			stop
-
-		set {_item} to {endgive::%arg-2%}
-		give {_item} to arg-1
-		send "&aGiven %name of {_item}%&a to %arg-1%."
+		set {_item} to get_item({_id})
+		# if there is no output from the function, we know the id is not valid.
+		stop if precondition(executor, whether {_item} is not set, "&cYou need to input a valid ID") = true
+		give {_amount} of {_item} to {_p}
+		send "&aGiven %{_amount}% %name of {_item}%&a to %{_p}%." to executor
 
 on tab complete of "endgive":
-	set tab completions for position 2 to indexes of {endgive::*}
+	set tab completions for position 2 to indexes of {-end_expansion::items::*}

@@ -1,0 +1,20 @@
+function get_id(item: item) :: string:
+	return string tag "id" of custom nbt of {_item}
+
+function get_item(id: string) :: item:
+	return {-end_expansion::items::%{_id}%}
+
+function precondition(player: player, condition: boolean, error: string = {_}) :: boolean:
+	if all:
+		{_condition} is true
+		{_error} is set
+	then:
+		send "%{_error}%" to {_player}
+	return {_condition}
+
+function get_pretty_location(pos: location) :: string:
+	set {_x} to round(x-coordinate of {_pos})
+	set {_y} to round(y-coordinate of {_pos})
+	set {_z} to round(z-coordinate of {_pos})
+	set {_world} to world of {_pos}
+	return "&eX: &7%{_x}%, &eY: &7%{_y}%, &eZ: &7%{_z}% in &e'%{_world}%'"
