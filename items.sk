@@ -44,8 +44,8 @@ on load:
 	set line 4 of lore of {_warp_stone} to "<#ff80f4>One-time use only."
 	set line 6 of lore of {_warp_stone} to "&7Location:"
 	apply custom model data to {_warp_stone}:
-		floats: 3
 		strings: "warp_stone"
+		floats: 3
 	set max stack size component of {_warp_stone} to 1
 	enchant {_warp_stone} with mending
 	set item flags of {_warp_stone} to hide enchantments
@@ -101,7 +101,7 @@ on load:
 	set line 5 of lore of {_end_upgrade_template} to "&7Ingredients:"
 	set line 6 of lore of {_end_upgrade_template} to " &9Enderite Ingot"
 	apply custom model data to {_end_upgrade_template}:
-		strings: "End_Upgrade_Smithing_Template"
+		strings: "end_upgrade_smithing_template"
 	set {endgive::end_upgrade_template} to {_end_upgrade_template}
 
 	set {_raw_enderite} to white dye
@@ -128,7 +128,7 @@ on load:
 	set item flags of {_enderite_helmet} to hide dye
 	set displayname of {_enderite_helmet} to "&eEnderite Helmet"
 	apply custom model data to {_enderite_helmet}:
-		strings: "Enderite_Helmet"
+		strings: "enderite_helmet"
 	
 	apply attribute modifier to {_enderite_helmet}:
 		id: "minecraft:armor.helmet"
@@ -195,7 +195,7 @@ on load:
 	set max durability of {_enderite_leggings} to 855
 	set item flags of {_enderite_leggings} to hide dye
 	apply custom model data to {_enderite_leggings}:
-		strings: "Enderite_Leggings"
+		strings: "enderite_leggings"
 
 	apply attribute modifier to {_enderite_leggings}:
 		id: "minecraft:armor.leggings"
@@ -229,7 +229,7 @@ on load:
 	set max durability of {_enderite_boots} to 781
 	set item flags of {_enderite_boots} to hide dye
 	apply custom model data to {_enderite_boots}:
-		strings: "Enderite_Boots"
+		strings: "enderite_boots"
 
 	apply attribute modifier to {_enderite_boots}:
 		id: "minecraft:armor.boots"
