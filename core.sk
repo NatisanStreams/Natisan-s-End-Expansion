@@ -9,10 +9,10 @@ on break of end stone:
 on death of ender dragon:
 	chance of 5%:
 		drop 1 of {endgive::dragon_slayer_upgrade} at position of victim
-		send "&bRARE DROP! &eTome of the Dragon Slayer &e(5%%)"
+		send "&bRARE DROP! &eTome of the Dragon Slayer &e(5%%)" to attacker
 	chance of 5%:
 		drop 1 of {endgive::dragon_scale} at position of victim
-		send "&bRARE DROP! &eDragon Scale &e(5%%)"
+		send "&bRARE DROP! &eDragon Scale &e(5%%)" to attacker
 
 
 on damage:
