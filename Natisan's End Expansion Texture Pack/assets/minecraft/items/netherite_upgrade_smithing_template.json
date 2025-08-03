@@ -4,15 +4,15 @@
     "property": "custom_model_data",
     "fallback": {
       "type": "model",
-      "model": "item/book"
+      "model": "item/netherite_upgrade_smithing_template"
 
     },
     "cases": [
       {
-        "when": "dragon_slayer_upgrade",
+        "when": "end_upgrade_smithing_template",
         "model": {
           "type": "model",
-          "model": "item/dragon_slayer_upgrade"
+          "model": "item/end_upgrade_smithing_template"
         }
       }
     ]

@@ -1,19 +1,20 @@
 {
-    "model": {
-        "type": "select",
-        "property": "custom_model_data",
-        "fallback": {
-            "type": "model",
-            "model": "item/white_dye"
-        },
-        "cases": [
-            {
-                "when": "raw_enderite",
-                "model": {
-                    "type": "model",
-                    "model": "item/raw_enderite"
-                }
-            }
-        ]
-    }
+  "model": {
+    "type": "select",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "item/white_dye"
+
+    },
+    "cases": [
+      {
+        "when": "raw_enderite",
+        "model": {
+          "type": "model",
+          "model": "item/raw_enderite"
+        }
+      }
+    ]
+  }
 }

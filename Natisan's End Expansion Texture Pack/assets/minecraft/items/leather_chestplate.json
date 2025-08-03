@@ -4,15 +4,15 @@
     "property": "custom_model_data",
     "fallback": {
       "type": "model",
-      "model": "item/book"
+      "model": "item/leather_chestplate"
 
     },
     "cases": [
       {
-        "when": "dragon_slayer_upgrade",
+        "when": "enderite_chestplate",
         "model": {
           "type": "model",
-          "model": "item/dragon_slayer_upgrade"
+          "model": "item/enderite_chestplate"
         }
       }
     ]

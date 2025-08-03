@@ -162,7 +162,7 @@ on load:
 	set max durability of {_enderite_chestplate} to 892
 	set item flags of {_enderite_chestplate} to hide dye
 	apply custom model data to {_enderite_chestplate}:
-		strings: "Enderite_Chestplate"
+		strings: "enderite_chestplate"
 
 	apply attribute modifier to {_enderite_chestplate}:
 		id: "minecraft:armor.chestplate"

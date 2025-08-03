@@ -1,19 +1,20 @@
 {
-    "model": {
-        "type": "select",
-        "property": "custom_model_data",
-        "fallback": {
-            "type": "model",
-            "model": "item/gray_dye"
-        },
-        "cases": [
-            {
-                "when": "enderite_ingot",
-                "model": {
-                    "type": "model",
-                    "model": "item/enderite_ingot"
-                }
-            }
-        ]
-    }
+  "model": {
+    "type": "select",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "item/gray_dye"
+
+    },
+    "cases": [
+      {
+        "when": "enderite_ingot",
+        "model": {
+          "type": "model",
+          "model": "item/enderite_ingot"
+        }
+      }
+    ]
+  }
 }
