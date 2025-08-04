@@ -253,3 +253,144 @@ on load:
 		operation: add_number
 
 	set {endgive::enderite_boots} to {_enderite_boots}
+
+
+	set {_enderite_sword} to netherite sword
+	set displayname of {_enderite_sword} to "&eEnderite Sword"
+	set max durability of {_enderite_sword} to 3000
+	apply custom model data to {_enderite_sword}:
+		strings: "enderite_sword"
+
+	apply attribute modifier to {_enderite_sword}:
+		id: "minecraft:base_attack_damage"
+		attribute: attack damage
+		amount: 9.0
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_sword}:
+		id: "minecraft:base_attack_speed"
+		attribute: attack speed
+		amount: -2.4
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_sword}:
+		id: "minecraft:base_attack_damage"
+		attribute: entity interaction range
+		amount: 1
+		slot: mainhand_slot_group
+		operation: add_number
+	
+	set {endgive::enderite_sword} to {_enderite_sword}
+
+	set {_enderite_axe} to netherite axe
+	set displayname of {_enderite_axe} to "&eEnderite Axe"
+	set max durability of {_enderite_axe} to 3000
+	apply custom model data to {_enderite_axe}:
+		strings: "enderite_axe"
+
+	apply attribute modifier to {_enderite_axe}:
+		id: "minecraft:base_attack_damage"
+		attribute: attack damage
+		amount: 11.0
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_axe}:
+		id: "minecraft:base_attack_speed"
+		attribute: attack speed
+		amount: -3.0
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_axe}:
+		id: "minecraft:base_attack_damage"
+		attribute: block interaction range
+		amount: 1
+		slot: mainhand_slot_group
+		operation: add_number
+
+	set {endgive::enderite_axe} to {_enderite_axe}
+
+
+	set {_enderite_shovel} to netherite shovel
+	set displayname of {_enderite_shovel} to "&eEnderite Shovel"
+	set max durability of {_enderite_shovel} to 3000
+	apply custom model data to {_enderite_shovel}:
+		strings: "enderite_shovel"
+
+	apply attribute modifier to {_enderite_shovel}:
+		id: "minecraft:base_attack_damage"
+		attribute: attack damage
+		amount: 5.5
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_shovel}:
+		id: "minecraft:base_attack_speed"
+		attribute: attack speed
+		amount: -3
+		slot: mainhand_slot_group
+		operation: add_number
+	
+	apply attribute modifier to {_enderite_shovel}:
+		id: "minecraft:base_attack_damage"
+		attribute: block interaction range
+		amount: 1
+		slot: mainhand_slot_group
+		operation: add_number
+
+	set {endgive::enderite_shovel} to {_enderite_shovel}
+
+	
+	set {_enderite_pickaxe} to netherite pickaxe
+	set displayname of {_enderite_pickaxe} to "&eEnderite Pickaxe"
+	set max durability of {_enderite_pickaxe} to 3000
+	apply custom model data to {_enderite_pickaxe}:
+		strings: "enderite_pickaxe"
+
+	apply attribute modifier to {_enderite_pickaxe}:
+		id: "minecraft:base_attack_damage"
+		attribute: attack damage
+		amount: 5
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_pickaxe}:
+		id: "minecraft:base_attack_speed"
+		attribute: attack speed
+		amount: -2.8
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_pickaxe}:
+		id: "minecraft:base_attack_damage"
+		attribute: block interaction range
+		amount: 1
+		slot: mainhand_slot_group
+		operation: add_number
+
+	set {endgive::enderite_pickaxe} to {_enderite_pickaxe}
+
+	set {_enderite_hoe} to netherite hoe
+	set displayname of {_enderite_hoe} to "&eEnderite Hoe"
+	set max durability of {_enderite_hoe} to 3000
+	apply custom model data to {_enderite_hoe}:
+		strings: "enderite_hoe"
+
+	apply attribute modifier to {_enderite_hoe}:
+		id: "minecraft:base_attack_damage"
+		attribute: attack damage
+		amount: 0 
+		slot: mainhand_slot_group
+		operation: add_number
+
+	apply attribute modifier to {_enderite_hoe}:
+		id: "minecraft:base_attack_speed"
+		attribute: attack speed
+		amount: 0
+		slot: mainhand_slot_group
+		operation: add_number
+
+	set {endgive::enderite_hoe} to {_enderite_hoe}

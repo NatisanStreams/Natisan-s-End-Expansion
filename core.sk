@@ -18,7 +18,8 @@ on death of ender dragon:
 on damage:
 	attacker is a player
 	victim is enderman or ender dragon or endermite
-	if name of attacker's tool is "<#d462ff>Dragon Slayer Sword":
+	set {_v::*} to custom model data strings of attacker's held item
+	if {_v::*} contains "dragon_slayer_sword":
 		set damage to damage * 1.1
 
 command /endgive <player> <text> <integer>:

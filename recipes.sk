@@ -57,6 +57,41 @@ on load:
 		template: {endgive::end_upgrade_template}
 		base: netherite boots
 		addition: {endgive::enderite_ingot}
+
+	register smithing transform recipe:
+		id: "end_expansion:enderite_sword"
+		result: {endgive::enderite_sword}
+		template: {endgive::end_upgrade_template}
+		base: netherite sword
+		addition: {endgive::enderite_ingot}
+
+	register smithing transform recipe:
+		id: "end_expansion:enderite_shovel"
+		result: {endgive::enderite_shovel}
+		template: {endgive::end_upgrade_template}
+		base: netherite shovel
+		addition: {endgive::enderite_ingot}
+
+	register smithing transform recipe:
+		id: "end_expansion:enderite_pickaxe"
+		result: {endgive::enderite_pickaxe}
+		template: {endgive::end_upgrade_template}
+		base: netherite pickaxe
+		addition: {endgive::enderite_ingot}
+
+	register smithing transform recipe:
+		id: "end_expansion:enderite_axe"
+		result: {endgive::enderite_axe}
+		template: {endgive::end_upgrade_template}
+		base: netherite axe
+		addition: {endgive::enderite_ingot}
+
+	register smithing transform recipe:
+		id: "end_expansion:enderite_hoe"
+		result: {endgive::enderite_hoe}
+		template: {endgive::end_upgrade_template}
+		base: netherite hoe
+		addition: {endgive::enderite_ingot}
 		
 	register new shaped recipe:
 		id: "end_expansion:enderite_upgrade_template"

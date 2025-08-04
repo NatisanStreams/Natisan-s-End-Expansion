@@ -14,6 +14,13 @@
           "type": "model",
           "model": "item/dragon_slayer_sword"
         }
+      },
+      {
+        "when": "enderite_sword",
+        "model": {
+          "type": "model",
+          "model": "item/enderite_sword"
+        }
       }
     ]
   }
